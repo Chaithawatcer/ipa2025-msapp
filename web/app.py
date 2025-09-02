@@ -4,11 +4,11 @@ from flask import Flask, request, render_template, redirect
 from pymongo import MongoClient
 from bson import ObjectId
 
-#mongo_uri  = os.environ.get("MONGO_URI")
-#db_name    = os.environ.get("DB_NAME")
+mongo_uri  = os.environ.get("MONGO_URI")
+db_name    = os.environ.get("DB_NAME")
 
-client = MongoClient("mongo:27017")
-db = client["mydatabase"]
+client = MongoClient(mongo_uri)
+db = client[db_name]
 routers = db["routers"]
 
 app = Flask(__name__)
