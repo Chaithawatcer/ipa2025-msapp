@@ -17,6 +17,5 @@ def save_interface_status(router_ip, interfaces):
         "timestamp": datetime.now(UTC),
         "interfaces": interfaces,
     }
-
     collection.insert_one(data)
     client.close()
