@@ -49,5 +49,3 @@ jobs:
         docker push chaithawat1234/worker:latest
         docker push chaithawat1234/scheduler:latest
         docker push chaithawat1234/web:latest
-
-ipa2025-msapp/.github/workflows on  main via  v3.12.3 (venv) 
