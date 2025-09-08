@@ -4,8 +4,8 @@ from flask import Flask, request, render_template, redirect
 from pymongo import MongoClient
 from bson import ObjectId
 
-mongo_uri  = os.environ.get("MONGO_URI")
-db_name    = os.environ.get("DB_NAME")
+mongo_uri = os.environ.get("MONGO_URI")
+db_name = os.environ.get("DB_NAME")
 
 client = MongoClient(mongo_uri)
 db = client[db_name]
@@ -18,6 +18,7 @@ app = Flask(__name__)
 def main():
     return render_template("index.html", routers=list(routers.find()))
 
+
 @app.route("/add", methods=["POST"])
 def add_router():
     ip = request.form.get("ip")
@@ -25,12 +26,15 @@ def add_router():
     password = request.form.get("password")
 
     if ip and username and password:
-        routers.insert_one({
-            "ip": ip,
-            "username": username,
-            "password": password
-        })
+        routers.insert_one(
+            {
+                "ip": ip,
+                "username": username,
+                "password": password,
+            }
+        )
     return redirect("/")
+
 
 @app.route("/delete/<id>", methods=["POST"])
 def delete_router(id):
@@ -39,6 +43,7 @@ def delete_router(id):
 
 
 interface_status = db["interface_status"]
+
 
 @app.route("/router/<ip>", methods=["GET"])
 def router_detail(ip):
