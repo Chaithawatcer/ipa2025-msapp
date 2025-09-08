@@ -1,2 +1,8 @@
+# .flake8
 [flake8]
-max-line-length = 88
+max-line-length = 100
+extend-ignore = E203, W503   # ให้เข้ากับ black
+# ถ้าจำเป็นจริง ๆ (ชั่วคราว) จะเพิกเฉพาะไฟล์ก็ได้ เช่น F401 unused import
+per-file-ignores =
+    sample_app.py:F401
+    scheduler/scheduler.py:F401
